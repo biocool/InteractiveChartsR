@@ -1,0 +1,48 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r lib}
+library("plotly")
+```
+
+```{r}
+p <- plot_ly(economics, x = ~date, y = ~unemploy / pop)
+p
+```
+```{r}
+library(networkD3)
+network <- read.csv("M:/DSB/datasets/Machine-Learning/network_dummy.csv")
+
+# create the network object
+# Plot
+p <- simpleNetwork(network, height="200px", width="200px",        
+                   Source = 1,
+                   Target = 2,
+                   fontSize = 18,                    
+                   linkColour = "#777",   
+                   nodeColour = "#F47E5E",    
+                   opacity = 0.7,             
+                   zoom = T)
+```
+
+
+```{r}
+# Load library
+install.packages("collapsibleTree")
+library(collapsibleTree) 
+ 
+# input data must be a nested data frame:
+head(warpbreaks)
+ 
+# Represent this tree:
+p <- collapsibleTree( warpbreaks, c("wool", "tension", "breaks"))
+p
+
+# save the widget
+# library(htmlwidgets)
+# saveWidget(p, file=paste0( getwd(), "/HtmlWidget/dendrogram_interactive.html"))
+
+```
+
